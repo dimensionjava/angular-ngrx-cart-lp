@@ -1,0 +1,49 @@
+
+<!-- <div>
+  <p> {{products}}</p>
+</div> -->
+
+
+<div class="row">
+  <!-- Card 1 -->
+  <div class="col-md-4 mb-4" *ngFor="let item of products.products" >
+    <p></p>
+    <div class="card product-card">
+      <img src="{{item.images}}" class="card-img-top product-img" alt="Casco de seguridad">
+      <div class="card-body">
+        <h5 class="card-title">{{item.title}}</h5>
+        <p class="card-text">{{item.description}}</p>
+        <div class="price-tag">{{item.price}}</div>
+        <a href="#" class="btn btn-primary mt-2">Añadir al carrito</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="cartItems$ | async as cartItems" style="background-color: red; height: 100px;">
+  <p>Cart Items: {{ cartItems | json }}</p>
+</div>
+<div>
+  <button (click)="addToCart()">Añadir al carrito</button>
+</div>
+
+<div class="w-full bg-red-500">
+  <button (click)="addToCart()">Añadir al carrito</button>
+</div>
+
+
+
+
+  <!-- Card 1 -->
+<!--   <div class="col-md-4 mb-4">
+    <div class="card product-card">
+      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500" class="card-img-top product-img" alt="Casco de seguridad">
+      <div class="card-body">
+        <h5 class="card-title">Casco de Seguridad</h5>
+        <p class="card-text">Protección certificada para cabeza con los más altos estándares.</p>
+        <div class="price-tag">S/ 89.90</div>
+        <a href="#" class="btn btn-primary mt-2">Añadir al carrito</a>
+      </div>
+    </div>
+  </div>
+</div>  -->

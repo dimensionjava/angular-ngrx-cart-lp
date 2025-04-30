@@ -1,0 +1,106 @@
+<div class="form-container">
+  <h2 class="form-title">Formulario de Contacto</h2>
+
+  <!-- Mensajes de éxito o error -->
+  <div *ngIf="submitSuccess" class="alert alert-success">
+    ¡Gracias por contactarnos! Hemos recibido tu mensaje y te responderemos a la brevedad.
+  </div>
+  <div *ngIf="submitError" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="contactFormGroup" (ngSubmit)="onSubmit()">
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <label for="firstName" class="form-label">Nombres</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                formControlName="firstName"
+                placeholder="Ingresa tus nombres"
+                [ngClass]="{'is-invalid': formSubmitted && formControl['firstName'].errors}">
+              <div *ngIf="formSubmitted && formControl['firstName'].errors" class="invalid-feedback">
+                <div *ngIf="formControl['firstName'].errors['required']">Por favor ingresa tu nombre</div>
+              </div>
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="lastName" class="form-label">Apellidos</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                formControlName="lastName"
+                placeholder="Ingresa tus apellidos"
+                [ngClass]="{'is-invalid': formSubmitted && formControl['lastName'].errors}">
+              <div *ngIf="formSubmitted && formControl['lastName'].errors" class="invalid-feedback">
+                <div *ngIf="formControl['lastName'].errors['required']">Por favor ingresa tu apellido</div>
+              </div>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="nombre@ejemplo.com"
+            [ngClass]="{'is-invalid': formSubmitted && formControl['email'].errors}">
+          <div *ngIf="formSubmitted && formControl['email'].errors" class="invalid-feedback">
+            <div *ngIf="formControl['email'].errors['required']">Por favor ingresa tu email</div>
+            <div *ngIf="formControl['email'].errors['email']">Por favor ingresa un email válido</div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <label for="phone" class="form-label">Teléfono</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="phone"
+                formControlName="phone"
+                placeholder="Teléfono de contacto">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="serviceType" class="form-label">Tipo de Servicio</label>
+              <select class="form-select" id="serviceType" formControlName="serviceType">
+                  <option selected>Selecciona una opción</option>
+                  <option value="equipos">Equipos de Protección</option>
+                  <option value="asesoria">Asesoría Técnica</option>
+                  <option value="capacitacion">Capacitación</option>
+                  <option value="otro">Otro</option>
+              </select>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="message" class="form-label">Mensaje</label>
+          <textarea
+            class="form-control"
+            id="message"
+            formControlName="message"
+            rows="4"
+            placeholder="¿Cómo podemos ayudarte?"></textarea>
+      </div>
+
+      <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="acceptTerms"
+            formControlName="acceptTerms"
+            [ngClass]="{'is-invalid': formSubmitted && formControl['acceptTerms'].errors}">
+          <label class="form-check-label" for="acceptTerms">Acepto los términos y condiciones</label>
+          <div *ngIf="formSubmitted && formControl['acceptTerms'].errors" class="invalid-feedback">
+            <div *ngIf="formControl['acceptTerms'].errors['required']">Debes aceptar los términos y condiciones</div>
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-send">
+          <i class="fas fa-paper-plane"></i> Enviar mensaje
+      </button>
+  </form>
+</div>

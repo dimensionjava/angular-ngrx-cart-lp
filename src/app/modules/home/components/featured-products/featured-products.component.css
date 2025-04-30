@@ -1,0 +1,7 @@
+/* Modificado: Imágenes de cards responsivas */
+.card img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  margin: 10px auto;
+}

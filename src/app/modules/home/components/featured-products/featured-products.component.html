@@ -1,0 +1,18 @@
+<div class="row mt-4">
+  <h2 class="text-center mb-4">Productos Destacados</h2>
+  <div class="col-md-4 mb-4" *ngFor="let homeProd of homeProduct">
+      <div class="card h-100">
+          <img src="{{homeProd.imageUrl}}"
+              class="card-img-top" alt="Casco de seguridad">
+          <div class="card-body">
+              <h5 class="card-title">{{homeProd.title}}</h5>
+              <p class="card-text">{{homeProd.description}}</p>
+              <a href="#" class="btn btn-primary">Ver detalles</a>
+          </div>
+      </div>
+  </div>
+
+  </div>
+
+
+
